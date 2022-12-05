@@ -1,0 +1,9 @@
+go 1.19
+
+use (
+	./day_01/golang
+	./day_02/golang
+	./day_03/golang
+	./day_04/golang
+	./day_05/golang
+)
