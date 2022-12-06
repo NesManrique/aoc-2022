@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bufio"
+	"aoc-2022/common"
 	"fmt"
 	"os"
 	"strconv"
@@ -9,14 +9,7 @@ import (
 )
 
 func main() {
-	filePath := os.Args[1]
-	readFile, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
+	lines := common.ReadFile(os.Args[1])
 
 	var comp1 string
 	var comp2 string
@@ -27,8 +20,7 @@ func main() {
 	var elfGroup []string
 	result2 := 0
 
-	for fileScanner.Scan() {
-		line := fileScanner.Text()
+	for _, line := range lines {
 
 		// part1
 		comp1 = line[0 : len(line)/2]
@@ -64,8 +56,6 @@ func main() {
 			elfGroup = []string{}
 		}
 	}
-
-	readFile.Close()
 
 	fmt.Println(result)
 	fmt.Println(result2)

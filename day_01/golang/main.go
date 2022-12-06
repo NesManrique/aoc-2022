@@ -1,31 +1,24 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"sort"
 	"strconv"
+
+	"aoc-2022/common"
 )
 
 func main() {
 
-	filePath := os.Args[1]
-	readFile, err := os.Open(filePath)
+	lines := common.ReadFile(os.Args[1])
 
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
 	var sumByElf []int
 	var elfSum int
 
 	elfSum = 0
 
-	for fileScanner.Scan() {
-		line := fileScanner.Text()
+	for _, line := range lines {
 
 		if line == "" {
 			sumByElf = append(sumByElf, elfSum)
@@ -36,8 +29,6 @@ func main() {
 		number, _ := strconv.Atoi(line)
 		elfSum += number
 	}
-
-	readFile.Close()
 
 	sumByElf = append(sumByElf, elfSum)
 

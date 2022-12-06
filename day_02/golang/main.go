@@ -1,21 +1,14 @@
 package main
 
 import (
-	"bufio"
+	"aoc-2022/common"
 	"fmt"
 	"os"
 )
 
 func main() {
 
-	filePath := os.Args[1]
-	readFile, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
+	lines := common.ReadFile(os.Args[1])
 
 	// Rock 1, A, X
 	// Paper 2, B, Y
@@ -61,8 +54,7 @@ func main() {
 	result := 0
 	result2 := 0
 
-	for fileScanner.Scan() {
-		line := fileScanner.Text()
+	for _, line := range lines {
 		result += outcomes[line]
 		result2 += outcomes2[line]
 	}

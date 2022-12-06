@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bufio"
+	"aoc-2022/common"
 	"fmt"
 	"os"
 	"strconv"
@@ -29,14 +29,8 @@ func areSeparate(range1 SectionRange, range2 SectionRange) bool {
 }
 
 func main() {
-	filePath := os.Args[1]
-	readFile, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println(err)
-	}
 
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
+	lines := common.ReadFile(os.Args[1])
 
 	// part1
 	result := 0
@@ -44,8 +38,7 @@ func main() {
 	// part2
 	result2 := 0
 
-	for fileScanner.Scan() {
-		line := fileScanner.Text()
+	for _, line := range lines {
 		sections := strings.Split(line, ",")
 		sectionRanges := make([]SectionRange, 2)
 		for i, sec := range sections {

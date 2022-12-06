@@ -1,7 +1,7 @@
 package main
 
 import (
-	"bufio"
+	"aoc-2022/common"
 	"fmt"
 	"os"
 	"strings"
@@ -30,17 +30,9 @@ func isMarker(slice string) bool {
 }
 
 func main() {
-	filePath := os.Args[1]
-	readFile, err := os.Open(filePath)
-	if err != nil {
-		fmt.Println(err)
-	}
+	lines := common.ReadFile(os.Args[1])
 
-	fileScanner := bufio.NewScanner(readFile)
-	fileScanner.Split(bufio.ScanLines)
-
-	for fileScanner.Scan() {
-		line := fileScanner.Text()
+	for _, line := range lines {
 		solution1 := findMarker(line, 4)
 		solution2 := findMarker(line, 14)
 		fmt.Println(solution1)
