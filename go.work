@@ -6,4 +6,5 @@ use (
 	./day_03/golang
 	./day_04/golang
 	./day_05/golang
+	./day_06/golang
 )
