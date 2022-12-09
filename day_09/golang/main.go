@@ -39,7 +39,7 @@ func main() {
 
 	tailVisited1 := map[image.Point]bool{}
 	tailVisited2 := map[image.Point]bool{}
-	// fmt.Println(len(tailVisited))
+	// fmt.Println(len(tailVisited1))
 
 	for _, line := range lines {
 		movement := strings.Fields(line)
@@ -48,9 +48,9 @@ func main() {
 		// fmt.Println("direction", direction, "distance", distance)
 
 		for i := 0; i < distance; i++ {
-			// fmt.Println("head", head, "tail", tail)
+			// fmt.Println("head", rope[0], "tail1", rope[1], "lasttail", rope[len(rope)-1])
 			rope[0] = rope[0].Add(directions[rune(direction[0])])
-			// fmt.Println("head", head, "tail", tail)
+			// fmt.Println("head", rope[0], "tail1", rope[1], "lasttail", rope[len(rope)-1])
 
 			for knot := 1; knot < len(rope); knot++ {
 				// Check if distance between head and tail (last tail) is > 1
@@ -58,7 +58,7 @@ func main() {
 					// fmt.Println("d: ", d)
 					// Move last tail to the right direction to be 1 away from head (last tail)
 					rope[knot] = rope[knot].Add(image.Point{sgn(d.X), sgn(d.Y)})
-					// fmt.Println("head", head, "tail", tail)
+					// fmt.Println("head", rope[0], "tail1", rope[1], "lasttail", rope[len(rope)-1])
 				}
 			}
 			// fmt.Println("---")
