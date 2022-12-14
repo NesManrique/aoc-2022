@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 )
 
 func ReadFile(filePath string) []string {
@@ -28,4 +29,10 @@ func ReplaceAtIndex(in string, r rune, i int) string {
 	out := []rune(in)
 	out[i] = r
 	return string(out)
+}
+
+func ConvertRuneToInt(r rune) int {
+	val := fmt.Sprintf("%d", r)
+	num, _ := strconv.Atoi(val)
+	return num
 }
