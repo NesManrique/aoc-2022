@@ -312,12 +312,15 @@ In practice, what I wanted to prove is:
 $$
 a ≡ (a mod n) (mod n)
 $$
+
 $$
 a - (a - kn)  = kn
 $$
+
 $$
 a - a + kn = kn
 $$
+
 $$
 kn = kn
 $$
